@@ -44,10 +44,9 @@ class Item:
         self.__name = new_name[:10]
 
     @classmethod
-    def instantiate_from_csv(cls, file_name):
+    def instantiate_from_csv(cls, file_csv):
         """Класс-метод, инициализирующий экземпляры класса Item данными из файла src/items.csv"""
-        cls.all = []
-        with open(file_name) as csvfile:
+        with open(file_csv) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 cls.all.append(cls(row["name"], row["price"], row["quantity"]))
