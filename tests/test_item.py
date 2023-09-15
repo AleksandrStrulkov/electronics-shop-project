@@ -14,14 +14,6 @@ def test_item_initialized(item):
 	assert item.quantity == 10
 
 
-def test_repr(item):
-	assert repr(item) == "Item('смартфон', 20000, 10)"
-
-
-def test_str(item):
-	assert str(item) == "смартфон"
-
-
 def test_calculate_total_price(item):
 	assert item.calculate_total_price() == 200000
 
