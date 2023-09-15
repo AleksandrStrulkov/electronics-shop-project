@@ -12,7 +12,7 @@ def test_repr(item):
 	assert repr(item) == "Item('смартфон', 20000, 10)"
 
 
-def test_ыек(item):
+def test_str(item):
 	assert str(item) == 'смартфон'
 
 
