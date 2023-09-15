@@ -16,10 +16,14 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.__name = name
+        self.name = name
         self.price = price
         self.quantity = quantity
         # Item.all.append(self)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
 
     def calculate_total_price(self) -> float:
         """
@@ -57,6 +61,5 @@ class Item:
         if string_num.isdigit():
             return int(string_num)
         return float(string_num) // 1
-
 
 
