@@ -8,6 +8,14 @@ def item():
 	return Item('смартфон', 20000, 10)
 
 
+def test_repr(item):
+	assert repr(item) == "Item('смартфон', 20000, 10)"
+
+
+def test_ыек(item):
+	assert str(item) == 'смартфон'
+
+
 def test_item_initialized(item):
 	assert item.name == "смартфон"
 	assert item.price == 20000
