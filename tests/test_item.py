@@ -3,6 +3,7 @@ import pytest
 from src.item import Item
 from src.phone import Phone
 
+
 @pytest.fixture
 def item():
 	return Item('смартфон', 20000, 10)
@@ -30,5 +31,25 @@ def phone():
 
 
 def test_phone(phone):
-	assert repr(phone) == "Phone:(iPhone 14, 120000, 5, 2)"
+	assert repr(phone) == "Phone('iPhone 14', 120000, 5, 2)"
 	assert str(phone) == 'iPhone 14'
+	assert phone.name == "iPhone 14"
+	assert phone.price == 120000
+	assert phone.quantity == 5
+	assert phone.calculate_total_price() == 600000
+	Phone.pay_rate = 0.8
+	phone.apply_discount()
+	assert phone.price == 96000.0
+	phone.name = 'iPhone 14'
+	assert phone.name == 'iPhone 14'
+	assert Phone.string_to_number('7') == 7
+	assert Phone.string_to_number('7.5') == 7
+
+
+def test_add_phone():
+	phone1 = Phone("iPhone 14", 120_000, 5, 2)
+	item1 = Item("Смартфон", 10000, 20)
+	assert item1 + phone1 == 25
+	assert phone1 + phone1 == 10
+
+
