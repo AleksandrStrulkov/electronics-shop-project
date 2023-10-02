@@ -81,5 +81,5 @@ class InstantiateCSVError(Exception):
     def __str__(self):
         return self.message
 
-# list(Item.instantiate_from_csv("src/items.csv"))
+
 
