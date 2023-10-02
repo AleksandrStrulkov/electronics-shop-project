@@ -1,5 +1,6 @@
 import csv
 
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -67,5 +68,11 @@ class Item:
             return int(string_num)
         return float(string_num) // 1
 
-list(Item.instantiate_from_csv("src/items.csv"))
+class InstantiateCSVError(Exception):
+    """Класс исключения при поврежденном файле"""
+    def __init__(self, *args, **kwargs):
+        self.message = args[0] if args else "Файл item.csv поврежден"
+
+
+# list(Item.instantiate_from_csv("src/items.csv"))
 
