@@ -1,6 +1,5 @@
 import csv
 
-
 class Item:
     """
     Класс для представления товара в магазине.
@@ -53,10 +52,13 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls, file_csv):
         """Класс-метод, инициализирующий экземпляры класса Item данными из файла src/items.csv"""
-        with open(file_csv) as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                cls.all.append(cls(row["name"], row["price"], row["quantity"]))
+        try:
+            with open(file_csv) as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    cls.all.append(cls(row["name"], row["price"], row["quantity"]))
+        except FileNotFoundError:
+            print("Отсутствует файл item.csv")
 
     @staticmethod
     def string_to_number(string_num):
@@ -65,5 +67,5 @@ class Item:
             return int(string_num)
         return float(string_num) // 1
 
-
+list(Item.instantiate_from_csv("src/items.csv"))
 
